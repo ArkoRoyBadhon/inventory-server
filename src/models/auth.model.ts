@@ -1,11 +1,25 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
-  name: {
+const AuthenticationSchema = new mongoose.Schema({
+  role: {
+    type: String,
+    enum: ["owner", "staff", "customer"],
+    required: true,
+  },
+
+  email: {
+    type: String,
+    required: true,
+  },
+
+  passwprd: {
     type: String,
     required: true,
   },
 });
 
-const Product = mongoose.model("Product", productSchema);
-export default Product;
+const Authentication = mongoose.model("Authentication", AuthenticationSchema);
+AuthenticationSchema.pre("save",function(){
+  
+})
+export default Authentication;

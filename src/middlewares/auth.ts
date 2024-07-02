@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
-import User from "../models/user.model";
 import ErrorHandler from "../utils/errorhandler";
+import Authentication from "../models/auth.model";
 
 export const isAuthenticatedUser = async (
   req: any,
@@ -25,7 +25,7 @@ export const isAuthenticatedUser = async (
     if (!decoded)
       return res.status(400).json({ msg: "Invalid Authentication." });
 
-    const user = await User.findOne({ _id: decoded?.user?.userId }).select(
+    const user = await Authentication.findOne({ _id: decoded?.user?.userId }).select(
       "-password"
     );
     if (!user) return res.status(400).json({ msg: "User does not exist." });
