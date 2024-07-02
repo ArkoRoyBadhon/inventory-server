@@ -5,6 +5,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  photo: {
+    type: String,
+    required: true,
+  },
   category: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -27,11 +31,11 @@ const productSchema = new mongoose.Schema({
   },
   cell: {
     type: String,
-    required: true,
+    // required: true,
   },
   service: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    type: Object,
+    // required: true,
   }
 });
 
